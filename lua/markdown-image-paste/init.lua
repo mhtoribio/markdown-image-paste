@@ -2,7 +2,7 @@
 local M = {}
 
 function M.pasteImage()
-    vim.print("hello world")
+    vim.print(getreg('+'))
 end
 
 return M
