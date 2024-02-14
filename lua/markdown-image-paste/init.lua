@@ -1,3 +1,8 @@
-function pasteImage()
-    print("hello world")
+
+local M = {}
+
+function M.pasteImage()
+
+print("hello world");
+
 end
