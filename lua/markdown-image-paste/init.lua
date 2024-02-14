@@ -2,7 +2,6 @@
 local M = {}
 
 function M.pasteImage()
-
-print("hello world");
+    vim.print("hello world")
 
 end
