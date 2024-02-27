@@ -32,7 +32,7 @@ function M.getfilename()
         end
 
         -- Check if the generated filename is unique, and exit the loop if it is.
-        if not M.file_exists(M.relative_path(filename)) then
+        if not M.file_exists(M.relative_path(filename)) and filename ~= ".png" then
             break -- Unique filename found, exit the loop.
         elseif M.custom_filename then
             -- Inform the user if the chosen custom filename already exists.
