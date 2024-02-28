@@ -35,7 +35,7 @@ vim.api.nvim_set_keymap('n','<C-i>', "<cmd>lua require('markdown-image-paste').p
 
 
 # Future feature list
- - [ ] check if data in clipboard is image before pasting
+ - [x] check if data in clipboard is image before pasting
  - [ ] check if file is markdown file
  - [ ] check if image in clipboard already has been saved to file before ( reuse old files )
  - [x] file name collision detection and resolution
