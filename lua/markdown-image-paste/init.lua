@@ -42,15 +42,25 @@ function M.getfilename()
     return filename
 end
 
+-- Function to check if clipboard contains an image
+function M.isImageInClipboard()
+    -- Get current TARGETS in xclip clipboard selection
+    local p = io.popen("xclip -selection clipboard -t TARGETS -o")
+    if p then
+        local output = p:read("*a")  -- Reads the entire output as a string
+        p:close()
+        -- Search for image MIME types in the output
+        if output:match("image/png") then
+            return true
+        end
+    end
+    return false
+end
+
 function M.createImageFile()
     local filename = M.getfilename()
     local filepath = vim.fn.expand('%:h')..'/'..M.dirname..'/'.. filename
-    image = io.open(filepath,"w")
-    for key,imgpart in pairs(vim.fn.getreg('+',1,1)) do
-        image:write(imgpart:gsub('\n','\0').."")
-        image:write('\n')
-    end
-    image:close()
+    os.execute("xclip -selection clipboard -target image/png -o > "..filepath)
     return filename
 end
 
@@ -64,6 +74,10 @@ local function insertText(text)
 end
 
 function M.pasteImage()
+    if not M.isImageInClipboard() then
+        vim.print("No image in clipboard")
+        return
+    end
     vim.print("mkdir -p " .. vim.fn.expand('%:h').."/"..M.dirname..'/' )
     os.execute("mkdir -p " .. vim.fn.expand('%:h').."/"..M.dirname..'/' )
     local imgName = M.createImageFile()
