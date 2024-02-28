@@ -38,6 +38,6 @@ vim.api.nvim_set_keymap('n','<C-i>', "<cmd>lua require('markdown-image-paste').p
  - [ ] check if data in clipboard is image before pasting
  - [ ] check if file is markdown file
  - [ ] check if image in clipboard already has been saved to file before ( reuse old files )
- - [ ] file name collision detection and resolution
- - [ ] promt user for custom file name
+ - [x] file name collision detection and resolution
+ - [x] prompt user for custom file name
  - [ ] support for other rich text formats (fx latex, RTF)
